@@ -6999,49 +6999,135 @@ i {
   object-fit: cover;       /* keeps image ratio & fills box */
 }
 /* ── TEAM CARDS PREMIUM FIX ── paste this AFTER your existing CSS ── */
+/* ══════════════════════════════════════════
+   TEAM SECTION — FULL PREMIUM CSS
+   Replace ALL previous team CSS with this
+══════════════════════════════════════════ */
 
+/* ── SECTION HEADING ── */
+.team-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.team-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #a777b5;
+  margin-bottom: 18px;
+  position: relative;
+  padding: 0 24px;
+}
+
+.team-label::before,
+.team-label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 1px;
+  background: #a777b5;
+  opacity: 0.5;
+}
+
+.team-label::before { right: 100%; margin-right: -20px; }
+.team-label::after  { left:  100%; margin-left:  -20px; }
+
+.team-title {
+  font-size: clamp(38px, 5vw, 62px) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  color: #ffffff !important;
+  margin: 0 0 28px !important;
+  letter-spacing: -0.03em !important;
+}
+
+.team-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, #a777b5 0%, #601777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.team-title-line {
+  width: 56px;
+  height: 3px;
+  background: linear-gradient(90deg, #a777b5, #601777);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+
+/* ── CARD WRAPPER ── */
 .team-m .team-m__single {
-  border-radius: 16px !important;
+  border-radius: 18px !important;
   overflow: hidden !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
-  transition: transform 0.4s ease, box-shadow 0.4s ease !important;
+  box-shadow: none !important;          /* ← shadow removed */
+  transition: transform 0.4s ease !important;
+  position: relative !important;
 }
 
 .team-m .team-m__single:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6) !important;
+  transform: translateY(-6px) !important;
+  box-shadow: none !important;          /* ← shadow removed on hover too */
 }
 
-/* Image zoom on hover */
+
+/* ── THUMB CONTAINER — TALLER ── */
+.team-m .team-m__single .thumb {
+  position: relative !important;
+  width: 100% !important;
+  height: 400px !important;             /* ← increased height */
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  display: block !important;
+}
+
+.team-m .team-m__single .thumb a {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+
+/* ── IMAGE ── */
 .team-m .team-m__single .thumb img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   object-position: top center !important;
   display: block !important;
-  transition: transform 0.5s ease !important;
+  transition: transform 0.55s ease !important;
 }
 
 .team-m .team-m__single:hover .thumb img {
-  transform: scale(1.07) !important;
+  transform: scale(1.06) !important;
 }
 
-/* Gradient overlay on image */
+
+/* ── GRADIENT OVERLAY ── */
 .team-m .team-m__single .thumb::before {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
   background: linear-gradient(
     to bottom,
-    transparent 35%,
-    rgba(5, 5, 15, 0.75) 70%,
-    rgba(5, 5, 15, 0.97) 100%
+    transparent 30%,
+    rgba(4, 4, 18, 0.65) 65%,
+    rgba(4, 4, 18, 0.98) 100%
   ) !important;
   z-index: 1 !important;
   pointer-events: none !important;
+  border-radius: 18px !important;
 }
 
-/* Info bar — full width, stacked layout */
+
+/* ── INFO BAR ── */
 .team-m .team-m__single .thumb .thumb__content {
   position: absolute !important;
   bottom: 0 !important;
@@ -7049,7 +7135,7 @@ i {
   right: 0 !important;
   width: 100% !important;
   height: auto !important;
-  padding: 16px 20px 14px !important;
+  padding: 20px 22px 18px !important;
   background: transparent !important;
   display: flex !important;
   flex-direction: row !important;
@@ -7059,15 +7145,23 @@ i {
   overflow: visible !important;
 }
 
-/* Name */
+/* Left text block */
+.team-m .team-m__single .thumb .thumb__content > div:first-child,
+.team-m .team-m__single .thumb .thumb__content > a:first-child {
+  flex: 1 !important;
+}
+
+
+/* ── NAME ── */
 .team-m .team-m__single .thumb .thumb__content h4 {
-  font-size: 15px !important;
-  font-weight: 600 !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
   color: #ffffff !important;
-  line-height: 1.3 !important;
-  margin: 0 0 4px !important;
+  line-height: 1.25 !important;
+  margin: 0 0 5px !important;
   white-space: normal !important;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: none !important;         /* ← clean, no shadow */
 }
 
 .team-m .team-m__single .thumb .thumb__content h4 a {
@@ -7075,17 +7169,19 @@ i {
   text-decoration: none !important;
 }
 
-/* Role */
+
+/* ── ROLE ── */
 .team-m .team-m__single .thumb .thumb__content p {
-  font-size: 11px !important;
-  font-weight: 400 !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
   color: #a777b5 !important;
   margin: 0 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.18em !important;    /* ← wide tracking = premium */
 }
 
-/* Social icons — slide in from right */
+
+/* ── SOCIAL ICON — slides in on hover ── */
 .team-m .team-m__single .thumb .thumb__content .social-alt {
   position: static !important;
   display: flex !important;
@@ -7096,11 +7192,11 @@ i {
   width: auto !important;
   height: auto !important;
   background: transparent !important;
-  transform: translateX(14px) !important;
+  transform: translateX(16px) !important;
   opacity: 0 !important;
   transition: opacity 0.35s ease, transform 0.35s ease !important;
   flex-shrink: 0 !important;
-  margin-left: 12px !important;
+  margin-left: 14px !important;
 }
 
 .team-m .team-m__single:hover .thumb .thumb__content .social-alt {
@@ -7109,18 +7205,18 @@ i {
 }
 
 .team-m .team-m__single .thumb .thumb__content .social-alt a {
-  width: 32px !important;
-  height: 32px !important;
+  width: 34px !important;
+  height: 34px !important;
   border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.1) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   color: #ffffff !important;
   font-size: 13px !important;
   text-decoration: none !important;
-  backdrop-filter: blur(6px) !important;
+  backdrop-filter: blur(8px) !important;
   transition: background 0.25s ease, border-color 0.25s ease !important;
 }
 
@@ -7130,7 +7226,8 @@ i {
   color: #fff !important;
 }
 
-/* Orange accent line slides in on hover */
+
+/* ── BOTTOM ACCENT LINE ── */
 .team-m .team-m__single::after {
   content: '' !important;
   position: absolute !important;
@@ -7143,89 +7240,40 @@ i {
   transform-origin: left !important;
   transition: transform 0.4s ease !important;
   z-index: 4 !important;
+  border-radius: 0 0 18px 18px !important;
 }
 
 .team-m .team-m__single:hover::after {
   transform: scaleX(1) !important;
 }
-/* ── TEAM SECTION HEADING ── */
-.team-section-header {
-  text-align: center;
-  margin-bottom: 56px;
-  position: relative;
+
+@media (min-width: 1200px) {
+    .col-xl-4 {
+        flex: 0 0 auto!important;
+        width: 24.333333% !important
+    }
 }
 
-.team-label {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: #a777b5;
-  margin-bottom: 16px;
-  position: relative;
-  padding: 0 20px;
+/* ── KILL ALL SHADOWS — ABSOLUTE OVERRIDE ── */
+.team-m__single,
+.team-m__single *,
+.team-m .team-m__single,
+.team-m .team-m__single *,
+div.team-m__single,
+.fade-top,
+.team-m .fade-top {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  drop-shadow: none !important;
 }
 
-.team-label::before,
-.team-label::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 40px;
-  height: 1px;
-  background: #a777b5;
-  opacity: 0.6;
-}
-
-.team-label::before { right: 100%; margin-right: -18px; }
-.team-label::after  { left:  100%; margin-left:  -18px; }
-
-.team-title {
-  font-size: clamp(36px, 5vw, 58px) !important;
-  font-weight: 800 !important;
-  line-height: 1.15 !important;
-  color: #ffffff !important;
-  margin: 0 0 24px !important;
-  letter-spacing: -0.02em !important;
-}
-
-.team-title em {
-  font-style: normal;
-  background: linear-gradient(90deg, #a777b5 0%, #601777 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.team-title-line {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #a777b5, #601777);
-  border-radius: 2px;
-  margin: 0 auto;
-}
-
-/* ── FIXED IMAGE HEIGHT — faces fully visible ── */
-.team-m .team-m__single .thumb {
-  position: relative !important;
-  width: 100% !important;
-  height: 340px !important;      /* ← increase this if faces are still cut */
-  overflow: hidden !important;
-  border-radius: 16px !important;
-}
-
-.team-m .team-m__single .thumb a {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.team-m .team-m__single .thumb img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: top center !important;  /* ← keeps faces at top */
-  display: block !important;
-  transition: transform 0.5s ease !important;
+.team-m__single:hover,
+.team-m .team-m__single:hover,
+div.team-m__single:hover {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
 }
